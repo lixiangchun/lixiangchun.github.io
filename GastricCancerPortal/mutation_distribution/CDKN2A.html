@@ -1,0 +1,135 @@
+
+<head>
+<script src='../TumorPortal_files/plotly-latest.min.js'></script>
+</head>
+
+<body>
+<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<script>
+
+
+
+var trace1 = {
+  x: ['ACC','BLCA','BRCA','CESC','CHOL','COAD','COADREAD','DLBC','ESCA','GBM','GBMLGG','HNSC','KICH','KIPAN','KIRC','KIRP','LAML','LGG','LIHC','LUAD','LUSC','OV','PAAD','PANCAN','PCPG','PRAD','READ','SARC','SKCM','STAD','STAD_LiXCEtAl','STES','TGCT','THCA','UCEC','UCS','UVM'],
+  y: [0,2.30769230769231,0.204708290685773,0.515463917525773,5.71428571428571,0,0,0,4.32432432432432,0.689655172413793,0.347222222222222,17.5627240143369,0,0.77639751552795,0.959232613908873,0.62111801242236,0,0,0.505050505050505,2.17391304347826,8.98876404494382,0,15.0684931506849,2.10866553794059,0.558659217877095,0,0,0,4.3731778425656,1.3840830449827,1.31868131868132,2.53164556962025,0,0,0.403225806451613,0,0],
+  //hoverinfo: 'text',
+  text: ['Adrenocortical carcinoma (n=83)<br /> Mutation frequency: 0%','Bladder urothelial carcinoma (n=112)<br /> Mutation frequency: 2.31%','Breast invasive carcinoma (n=957)<br /> Mutation frequency: 0.205%','Cervical and endocervical cancers (n=178)<br /> Mutation frequency: 0.515%','Cholangiocarcinoma (n=34)<br /> Mutation frequency: 5.71%','Colon adenocarcinoma (n=126)<br /> Mutation frequency: 0%','Colorectal adenocarcinoma (n=192)<br /> Mutation frequency: 0%','Lymphoid Neoplasm Diffuse Large B-cell Lymphoma (n=39)<br /> Mutation frequency: 0%','Esophageal carcinoma (n=173)<br /> Mutation frequency: 4.32%','Glioblastoma multiforme (n=290)<br /> Mutation frequency: 0.69%','Glioma (n=575)<br /> Mutation frequency: 0.347%','Head and Neck squamous cell carcinoma (n=263)<br /> Mutation frequency: 17.6%','Kidney Chromophobe (n=65)<br /> Mutation frequency: 0%','Pan-kidney cohort (KICH+KIRC+KIRP) (n=643)<br /> Mutation frequency: 0.776%','Kidney renal clear cell carcinoma (n=417)<br /> Mutation frequency: 0.959%','Kidney renal papillary cell carcinoma (n=161)<br /> Mutation frequency: 0.621%','Acute Myeloid Leukemia (n=196)<br /> Mutation frequency: 0%','Brain Lower Grade Glioma (n=285)<br /> Mutation frequency: 0%','Liver hepatocellular carcinoma (n=196)<br /> Mutation frequency: 0.505%','Lung adenocarcinoma (n=187)<br /> Mutation frequency: 2.17%','Lung squamous cell carcinoma (n=155)<br /> Mutation frequency: 8.99%','Ovarian serous cystadenocarcinoma (n=316)<br /> Mutation frequency: 0%','Pancreatic adenocarcinoma (n=145)<br /> Mutation frequency: 15.1%','TCGA Pan-Cancer (n=~8k)<br /> Mutation frequency: 2.11%','Pheochromocytoma and Paraganglioma (n=179)<br /> Mutation frequency: 0.559%','Prostate adenocarcinoma (n=331)<br /> Mutation frequency: 0%','Rectum adenocarcinoma (n=66)<br /> Mutation frequency: 0%','Sarcoma (n=246)<br /> Mutation frequency: 0%','Skin Cutaneous Melanoma (n=192)<br /> Mutation frequency: 4.37%','Stomach adenocarcinoma (n=221)<br /> Mutation frequency: 1.38%','Stomach adenocarcinoma (Li X. C. et al.) (n=455)<br /> Mutation frequency: 1.32%','Stomach and Esophageal carcinoma (n=394)<br /> Mutation frequency: 2.53%','Testicular Germ Cell Tumors (n=148)<br /> Mutation frequency: 0%','Thyroid carcinoma (n=402)<br /> Mutation frequency: 0%','Uterine Corpus Endometrial Carcinoma (n=200)<br /> Mutation frequency: 0.403%','Uterine Carcinosarcoma (n=55)<br /> Mutation frequency: 0%','Uveal Melanoma (n=79)<br /> Mutation frequency: 0%'],
+  type: 'bar',
+  marker: {
+    color: ['#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#FFC409','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#EE5000','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF']
+  }
+};
+
+var data = [trace1];
+
+var layout = {
+  title: 'Mutation frequencies of <em>CDKN2A</em> across human cancers',
+  width: 880,
+  height: 320,
+  margin: {
+    b: 100
+  },
+  yaxis: {
+    title: 'Mutation freq (%)'
+  },
+  xaxis: {
+    title: 'Abbr. of human cancer types',
+    titlefont: {
+      size: 18,
+      color: 'black'
+    },
+    tickfont: {}
+  }
+};
+
+Plotly.newPlot('myDiv', data, layout);
+       
+
+</script>
+
+<div id='myDivUniqueID'></div>
+<script>  
+
+
+  
+var trace1 = {
+  x: ['p.E69*'],
+  y: [1],
+  text: ['Ank_2,Ank<br />c.C>A; p.E69* <br />RadialSVM_pred:.; LR_pred:.'],
+  mode: 'markers',
+  name: 'Nonsense_Mutation',
+  marker: {
+    symbol: ['star-open-dot'],
+    size: 8,
+    color: ['#1B9E77']
+  }
+};
+
+
+  
+var trace2 = {
+  x: ['p.V64fs'],
+  y: [1],
+  text: ['P19Arf_N,Ank_2<br />c.->T; p.V64fs <br />RadialSVM_pred:; LR_pred:'],
+  mode: 'markers',
+  name: 'Frame_Shift_Ins',
+  marker: {
+    symbol: ['triangle-down-open-dot'],
+    size: 8,
+    color: ['#1B9E77']
+  }
+};
+
+
+  
+var trace3 = {
+  x: ['p.R61fs'],
+  y: [1],
+  text: ['P19Arf_N,Ank_2<br />c.G>-; p.R61fs <br />RadialSVM_pred:; LR_pred:'],
+  mode: 'markers',
+  name: 'Frame_Shift_Del',
+  marker: {
+    symbol: ['triangle-up-open-dot'],
+    size: 8,
+    color: ['#1B9E77']
+  }
+};
+
+
+  
+var trace4 = {
+  x: ['p.H32Y','p.R29Q'],
+  y: [2,1],
+  text: ['P19Arf_N,Ank_2<br />c.G>A; p.H32Y <br />RadialSVM_pred:T|T; LR_pred:T|T','P19Arf_N,Ank_2<br />c.C>T; p.R29Q <br />RadialSVM_pred:T; LR_pred:T'],
+  mode: 'markers',
+  name: 'Missense_Mutation',
+  marker: {
+    symbol: ['star-diamond-dot-open','star-diamond-dot-open'],
+    size: 8,
+    color: ['#1B9E77','#1B9E77']
+  }
+};
+
+data = [trace1, trace2, trace3, trace4];
+
+var layout = {
+  title:'Mutation plot of <em>CDKN2A</em> in gastric cancer (Li X.C. et al.)',
+  height: 400,
+  width: 1000,
+  margin: {
+    b: 160
+  },
+  xaxis: {
+    title: 'Amino acid changes <br /> Note: different colors except black represent different Pfam domains. <br /> The black color for Pfam domain Not_Available. <br /> Functional prediction with SVM and LR from dbNSFP are provided.'
+  },
+  yaxis: {
+    title: 'Number of mutations'
+  }
+};
+Plotly.newPlot('myDivUniqueID', data, layout);
+
+
+
+</script>
+</body>
+

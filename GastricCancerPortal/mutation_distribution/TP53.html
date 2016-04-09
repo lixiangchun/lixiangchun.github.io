@@ -1,0 +1,165 @@
+
+<head>
+<script src='../TumorPortal_files/plotly-latest.min.js'></script>
+</head>
+
+<body>
+<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<script>
+
+
+
+var trace1 = {
+  x: ['ACC','BLCA','BRCA','CESC','CHOL','COAD','COADREAD','DLBC','ESCA','GBM','GBMLGG','HNSC','KICH','KIPAN','KIRC','KIRP','LAML','LGG','LIHC','LUAD','LUSC','OV','PAAD','PANCAN','PCPG','PRAD','READ','SARC','SKCM','STAD','STAD_LiXCEtAl','STES','TGCT','THCA','UCEC','UCS','UVM'],
+  y: [12.2222222222222,39.2307692307692,30.2968270214944,3.09278350515464,14.2857142857143,44.8051948051948,50.6726457399103,10.4166666666667,77.8378378378378,28.9655172413793,39.7569444444444,69.8924731182796,31.8181818181818,4.81366459627329,1.43884892086331,2.48447204968944,7.61421319796954,50.6993006993007,30.8080808080808,30.8695652173913,70.2247191011236,87.0253164556962,68.4931506849315,32.0301677697399,0.558659217877095,6.92771084337349,63.768115942029,32.5396825396825,3.79008746355685,38.7543252595156,48.3516483516484,54.0084388185654,1.34228187919463,0.746268656716418,24.5967741935484,89.4736842105263,0],
+  //hoverinfo: 'text',
+  text: ['Adrenocortical carcinoma (n=83)<br /> Mutation frequency: 12.2%','Bladder urothelial carcinoma (n=112)<br /> Mutation frequency: 39.2%','Breast invasive carcinoma (n=957)<br /> Mutation frequency: 30.3%','Cervical and endocervical cancers (n=178)<br /> Mutation frequency: 3.09%','Cholangiocarcinoma (n=34)<br /> Mutation frequency: 14.3%','Colon adenocarcinoma (n=126)<br /> Mutation frequency: 44.8%','Colorectal adenocarcinoma (n=192)<br /> Mutation frequency: 50.7%','Lymphoid Neoplasm Diffuse Large B-cell Lymphoma (n=39)<br /> Mutation frequency: 10.4%','Esophageal carcinoma (n=173)<br /> Mutation frequency: 77.8%','Glioblastoma multiforme (n=290)<br /> Mutation frequency: 29%','Glioma (n=575)<br /> Mutation frequency: 39.8%','Head and Neck squamous cell carcinoma (n=263)<br /> Mutation frequency: 69.9%','Kidney Chromophobe (n=65)<br /> Mutation frequency: 31.8%','Pan-kidney cohort (KICH+KIRC+KIRP) (n=643)<br /> Mutation frequency: 4.81%','Kidney renal clear cell carcinoma (n=417)<br /> Mutation frequency: 1.44%','Kidney renal papillary cell carcinoma (n=161)<br /> Mutation frequency: 2.48%','Acute Myeloid Leukemia (n=196)<br /> Mutation frequency: 7.61%','Brain Lower Grade Glioma (n=285)<br /> Mutation frequency: 50.7%','Liver hepatocellular carcinoma (n=196)<br /> Mutation frequency: 30.8%','Lung adenocarcinoma (n=187)<br /> Mutation frequency: 30.9%','Lung squamous cell carcinoma (n=155)<br /> Mutation frequency: 70.2%','Ovarian serous cystadenocarcinoma (n=316)<br /> Mutation frequency: 87%','Pancreatic adenocarcinoma (n=145)<br /> Mutation frequency: 68.5%','TCGA Pan-Cancer (n=~8k)<br /> Mutation frequency: 32%','Pheochromocytoma and Paraganglioma (n=179)<br /> Mutation frequency: 0.559%','Prostate adenocarcinoma (n=331)<br /> Mutation frequency: 6.93%','Rectum adenocarcinoma (n=66)<br /> Mutation frequency: 63.8%','Sarcoma (n=246)<br /> Mutation frequency: 32.5%','Skin Cutaneous Melanoma (n=192)<br /> Mutation frequency: 3.79%','Stomach adenocarcinoma (n=221)<br /> Mutation frequency: 38.8%','Stomach adenocarcinoma (Li X. C. et al.) (n=455)<br /> Mutation frequency: 48.4%','Stomach and Esophageal carcinoma (n=394)<br /> Mutation frequency: 54%','Testicular Germ Cell Tumors (n=148)<br /> Mutation frequency: 1.34%','Thyroid carcinoma (n=402)<br /> Mutation frequency: 0.746%','Uterine Corpus Endometrial Carcinoma (n=200)<br /> Mutation frequency: 24.6%','Uterine Carcinosarcoma (n=55)<br /> Mutation frequency: 89.5%','Uveal Melanoma (n=79)<br /> Mutation frequency: 0%'],
+  type: 'bar',
+  marker: {
+    color: ['#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#FFC409','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#EE5000','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF']
+  }
+};
+
+var data = [trace1];
+
+var layout = {
+  title: 'Mutation frequencies of <em>TP53</em> across human cancers',
+  width: 880,
+  height: 320,
+  margin: {
+    b: 100
+  },
+  yaxis: {
+    title: 'Mutation freq (%)'
+  },
+  xaxis: {
+    title: 'Abbr. of human cancer types',
+    titlefont: {
+      size: 18,
+      color: 'black'
+    },
+    tickfont: {}
+  }
+};
+
+Plotly.newPlot('myDiv', data, layout);
+       
+
+</script>
+
+<div id='myDivUniqueID'></div>
+<script>  
+
+
+  
+var trace1 = {
+  x: ['p.L350P','p.N345D','p.F338L','p.R337C','p.G334V','p.R333P','p.E286K','p.E285V','p.E285K','p.R282G','p.R282W','p.R280S','p.P278H','p.V274G','p.V274D','p.R273S','p.R273C','p.V272M','p.E271K','p.F270S','p.F270L','p.G266E','p.P250L','p.R249S','p.R249S','p.R248Q','p.R248W','p.G245S','p.G244D','p.G244S','p.C242S','p.C242Y','p.N239T','p.C238F','p.M237I','p.M237I','p.M237K','p.Y236C','p.Y234C','p.Y234N','p.Y220C','p.V217G','p.V216L','p.S215R','p.S215R','p.H214R','p.Y205F','p.V197L','p.I195N','p.H193R','p.H179R','p.H179Y','p.H179N','p.C176F','p.R175H','p.R175G','p.V173M','p.V172F','p.Y163C','p.R158H','p.V157A','p.V157D','p.V157F','p.P152R','p.P151T','p.Q136E','p.C135Y','p.C135F','p.K132E','p.L130V','p.L130F','p.S127F','p.L111Q','p.Y107D','p.V10I'],
+  y: [1,1,1,1,1,1,3,1,1,1,8,1,1,1,1,1,6,2,1,1,1,1,1,1,1,13,2,5,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,3,1,1,1,1,2,1,1,4,14,3,3,1,1,1,1,1,1,1,1,1,1,1,1,2,1,2,1,1,1],
+  text: ['Not_Available<br />c.A>G; p.L350P <br />RadialSVM_pred:D; LR_pred:D','Not_Available<br />c.T>C; p.N345D <br />RadialSVM_pred:D; LR_pred:D','Not_Available<br />c.G>C; p.F338L <br />RadialSVM_pred:D; LR_pred:D','Not_Available<br />c.G>A; p.R337C <br />RadialSVM_pred:D; LR_pred:D','Not_Available<br />c.C>A; p.G334V <br />RadialSVM_pred:D; LR_pred:D','Not_Available<br />c.C>G; p.R333P <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.E286K <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>A; p.E285V <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.E285K <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>C; p.R282G <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>A; p.R282W <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>G; p.R280S <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>T; p.P278H <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>C; p.V274G <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>T; p.V274D <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>T; p.R273S <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>A; p.R273C <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.V272M <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.E271K <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>G; p.F270S <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>G; p.F270L <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.G266E <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>A; p.P250L <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>A; p.R249S <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>G; p.R249S <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.R248Q <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>A; p.R248W <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.G245S <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.G244D <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.G244S <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>G; p.C242S <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.C242Y <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>G; p.N239T <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>A; p.C238F <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>G; p.M237I <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.M237I <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>T; p.M237K <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>C; p.Y236C <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>C; p.Y234C <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>T; p.Y234N <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>C; p.Y220C <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>C; p.V217G <br />RadialSVM_pred:.|D; LR_pred:.|D','P53<br />c.C>A; p.V216L <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>C; p.S215R <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>G; p.S215R <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>C; p.H214R <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>A; p.Y205F <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>A; p.V197L <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>T; p.I195N <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>C; p.H193R <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>C; p.H179R <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>A; p.H179Y <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>T; p.H179N <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>A; p.C176F <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.R175H <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>C; p.R175G <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.V173M <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>A; p.V172F <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>C; p.Y163C <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.R158H <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>G; p.V157A <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>T; p.V157D <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>A; p.V157F <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>C; p.P152R <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>T; p.P151T <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>C; p.Q136E <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>T; p.C135Y <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.C>A; p.C135F <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.T>C; p.K132E <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>C; p.L130V <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>A; p.L130F <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.G>A; p.S127F <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>T; p.L111Q <br />RadialSVM_pred:D; LR_pred:D','P53<br />c.A>C; p.Y107D <br />RadialSVM_pred:D; LR_pred:D','Not_Available<br />c.C>T; p.V10I <br />RadialSVM_pred:D; LR_pred:D'],
+  mode: 'markers',
+  name: 'Missense_Mutation',
+  marker: {
+    symbol: ['star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open'],
+    size: 8,
+    color: ['black','black','black','black','black','black','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','black']
+  }
+};
+
+
+  
+var trace2 = {
+  x: ['p.N345fs','p.N345fs','p.E339fs','p.I195fs','p.L194fs','p.P152fs','p.P152fs','p.C124fs','p.P98fs','p.V97fs','p.V73fs'],
+  y: [1,1,1,1,1,1,1,1,1,1,1],
+  text: ['Not_Available<br />c.->TCAGC; p.N345fs <br />RadialSVM_pred:; LR_pred:','Not_Available<br />c.->TCAGC; p.N345fs <br />RadialSVM_pred:; LR_pred:','Not_Available<br />c.->C; p.E339fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.->A; p.I195fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.->A; p.L194fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.->G; p.P152fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.->G; p.P152fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.->A; p.C124fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.->C; p.P98fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.->C; p.V97fs <br />RadialSVM_pred:; LR_pred:','P53,P53_tetramer<br />c.->G; p.V73fs <br />RadialSVM_pred:; LR_pred:'],
+  mode: 'markers',
+  name: 'Frame_Shift_Ins',
+  marker: {
+    symbol: ['triangle-down-open-dot','triangle-down-open-dot','triangle-down-open-dot','triangle-down-open-dot','triangle-down-open-dot','triangle-down-open-dot','triangle-down-open-dot','triangle-down-open-dot','triangle-down-open-dot','triangle-down-open-dot','triangle-down-open-dot'],
+    size: 8,
+    color: ['black','black','black','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#7570B3']
+  }
+};
+
+
+  
+var trace3 = {
+  x: ['p.R342*','p.Q317*','p.R306*','p.E221*','p.R213*','p.E198*','p.R196*','p.Q192*','p.Q167*','p.W146*','p.W146*','p.Q144*','p.Q136*','p.S94*','p.W91*','p.Q5*'],
+  y: [2,1,7,1,7,1,3,1,1,1,1,1,2,1,2,1],
+  text: ['Not_Available<br />c.G>A; p.R342* <br />RadialSVM_pred:.; LR_pred:.','P53_TAD<br />c.G>A; p.Q317* <br />RadialSVM_pred:.; LR_pred:.','Not_Available<br />c.G>A; p.R306* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.C>A; p.E221* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.G>A; p.R213* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.C>A; p.E198* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.G>A; p.R196* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.G>A; p.Q192* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.G>A; p.Q167* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.C>T; p.W146* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.C>T; p.W146* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.G>A; p.Q144* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.G>A; p.Q136* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.G>C; p.S94* <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.C>T; p.W91* <br />RadialSVM_pred:.; LR_pred:.','Not_Available<br />c.G>A; p.Q5* <br />RadialSVM_pred:.; LR_pred:.'],
+  mode: 'markers',
+  name: 'Nonsense_Mutation',
+  marker: {
+    symbol: ['star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot','star-open-dot'],
+    size: 8,
+    color: ['black','#7570B3','black','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','black']
+  }
+};
+
+
+  
+var trace4 = {
+  x: ['p.E339fs','p.T284fs','p.DRR281fs','p.R267fs','p.G266fs','p.S241fs','p.SS240fs','p.S241fs','p.C229fs','p.D228fs','p.V225fs','p.EP221fs','p.E221fs','p.F212fs','p.IRVEGNL195fs','p.L194fs','p.P191fs','p.PPPGTRVRA151fs','p.P153fs','p.Q144fs','p.KSVT120fs','p.V122fs','p.YGFR107fs','p.T102fs','p.P82fs','p.P34fs','p.L26fs'],
+  y: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1],
+  text: ['Not_Available<br />c.C>-; p.E339fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.G>-; p.T284fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.CGCCGGT>-; p.DRR281fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.C>-; p.R267fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.C>-; p.G266fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.G>-; p.S241fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.GGAAC>-; p.SS240fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.A>-; p.S241fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.AC>-; p.C229fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.C>-; p.D228fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.A>-; p.V225fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.CGGCT>-; p.EP221fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.T>-; p.E221fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.AA>-; p.F212fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.AATTTCCTTCCACTCGGAT>-; p.IRVEGNL195fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.A>-; p.L194fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.G>-; p.P191fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.GGCGCGGACGCGGGTGCCGGGCGGG>-; p.PPPGTRVRA151fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.G>-; p.P153fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.G>-; p.Q144fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.AGTCACAGACT>-; p.KSVT120fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.CA>-; p.V122fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.GGAAACCGTA>-; p.YGFR107fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.G>-; p.T102fs <br />RadialSVM_pred:; LR_pred:','P53<br />c.G>-; p.P82fs <br />RadialSVM_pred:; LR_pred:','Not_Available<br />c.G>-; p.P34fs <br />RadialSVM_pred:; LR_pred:','Not_Available<br />c.AA>-; p.L26fs <br />RadialSVM_pred:; LR_pred:'],
+  mode: 'markers',
+  name: 'Frame_Shift_Del',
+  marker: {
+    symbol: ['triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot','triangle-up-open-dot'],
+    size: 8,
+    color: ['black','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','black','black']
+  }
+};
+
+
+  
+var trace5 = {
+  x: ['p.R335del','p.SSC240del','p.F113del'],
+  y: [1,1,1],
+  text: ['Not_Available<br />c.CGC>-; p.R335del <br />RadialSVM_pred:; LR_pred:','P53<br />c.TGCAGGAAC>-; p.SSC240del <br />RadialSVM_pred:; LR_pred:','P53<br />c.AAG>-; p.F113del <br />RadialSVM_pred:; LR_pred:'],
+  mode: 'markers',
+  name: 'In_Frame_Del',
+  marker: {
+    symbol: ['hexagon2-open-dot','hexagon2-open-dot','hexagon2-open-dot'],
+    size: 8,
+    color: ['black','#D95F02','#D95F02']
+  }
+};
+
+
+  
+var trace6 = {
+  x: ['Splice_Site','Splice_Site','Splice_Site','Splice_Site','Splice_Site','Splice_Site','Splice_Site','Splice_Site','Splice_Site','Splice_Site','Splice_Site','p.T125T','Splice_Site'],
+  y: [1,1,1,1,1,1,1,1,1,2,4,1,1],
+  text: ['P53_TAD<br />c.C>T;  <br />RadialSVM_pred:.; LR_pred:.','Not_Available<br />c.T>-;  <br />RadialSVM_pred:; LR_pred:','P53<br />c.C>T;  <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.A>C;  <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.C>G;  <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.T>C;  <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.C>T;  <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.C>A;  <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.C>T;  <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.T>C;  <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.C>T;  <br />RadialSVM_pred:.; LR_pred:.','P53<br />c.C>G; p.T125T <br />RadialSVM_pred:; LR_pred:','Not_Available<br />c.T>A;  <br />RadialSVM_pred:.; LR_pred:.'],
+  mode: 'markers',
+  name: 'Splice_Site',
+  marker: {
+    symbol: ['y-down-open','y-down-open','y-down-open','y-down-open','y-down-open','y-down-open','y-down-open','y-down-open','y-down-open','y-down-open','y-down-open','y-down-open','y-down-open'],
+    size: 8,
+    color: ['#7570B3','black','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','#D95F02','black']
+  }
+};
+
+data = [trace1, trace2, trace3, trace4, trace5, trace6];
+
+var layout = {
+  title:'Mutation plot of <em>TP53</em> in gastric cancer (Li X.C. et al.)',
+  height: 400,
+  width: 1000,
+  margin: {
+    b: 160
+  },
+  xaxis: {
+    title: 'Amino acid changes <br /> Note: different colors except black represent different Pfam domains. <br /> The black color for Pfam domain Not_Available. <br /> Functional prediction with SVM and LR from dbNSFP are provided.'
+  },
+  yaxis: {
+    title: 'Number of mutations'
+  }
+};
+Plotly.newPlot('myDivUniqueID', data, layout);
+
+
+
+</script>
+</body>
+

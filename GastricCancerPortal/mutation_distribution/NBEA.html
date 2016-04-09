@@ -1,0 +1,120 @@
+
+<head>
+<script src='../TumorPortal_files/plotly-latest.min.js'></script>
+</head>
+
+<body>
+<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<script>
+
+
+
+var trace1 = {
+  x: ['ACC','BLCA','BRCA','CESC','CHOL','COAD','COADREAD','DLBC','ESCA','GBM','GBMLGG','HNSC','KICH','KIPAN','KIRC','KIRP','LAML','LGG','LIHC','LUAD','LUSC','OV','PAAD','PANCAN','PCPG','PRAD','READ','SARC','SKCM','STAD','STAD_LiXCEtAl','STES','TGCT','THCA','UCEC','UCS','UVM'],
+  y: [0,3.07692307692308,0.818833162743091,2.06185567010309,0,3.24675324675325,3.1390134529148,6.25,9.72972972972973,1.72413793103448,1.04166666666667,3.2258064516129,0,0.93167701863354,0.719424460431655,1.86335403726708,0,0.34965034965035,4.54545454545455,3.91304347826087,5.0561797752809,2.21518987341772,1.36986301369863,2.18562413421579,1.11731843575419,0,2.89855072463768,0.793650793650794,2.91545189504373,6.57439446366782,6.81318681318681,7.80590717299578,0.671140939597315,0,2.82258064516129,0,0],
+  //hoverinfo: 'text',
+  text: ['Adrenocortical carcinoma (n=83)<br /> Mutation frequency: 0%','Bladder urothelial carcinoma (n=112)<br /> Mutation frequency: 3.08%','Breast invasive carcinoma (n=957)<br /> Mutation frequency: 0.819%','Cervical and endocervical cancers (n=178)<br /> Mutation frequency: 2.06%','Cholangiocarcinoma (n=34)<br /> Mutation frequency: 0%','Colon adenocarcinoma (n=126)<br /> Mutation frequency: 3.25%','Colorectal adenocarcinoma (n=192)<br /> Mutation frequency: 3.14%','Lymphoid Neoplasm Diffuse Large B-cell Lymphoma (n=39)<br /> Mutation frequency: 6.25%','Esophageal carcinoma (n=173)<br /> Mutation frequency: 9.73%','Glioblastoma multiforme (n=290)<br /> Mutation frequency: 1.72%','Glioma (n=575)<br /> Mutation frequency: 1.04%','Head and Neck squamous cell carcinoma (n=263)<br /> Mutation frequency: 3.23%','Kidney Chromophobe (n=65)<br /> Mutation frequency: 0%','Pan-kidney cohort (KICH+KIRC+KIRP) (n=643)<br /> Mutation frequency: 0.932%','Kidney renal clear cell carcinoma (n=417)<br /> Mutation frequency: 0.719%','Kidney renal papillary cell carcinoma (n=161)<br /> Mutation frequency: 1.86%','Acute Myeloid Leukemia (n=196)<br /> Mutation frequency: 0%','Brain Lower Grade Glioma (n=285)<br /> Mutation frequency: 0.35%','Liver hepatocellular carcinoma (n=196)<br /> Mutation frequency: 4.55%','Lung adenocarcinoma (n=187)<br /> Mutation frequency: 3.91%','Lung squamous cell carcinoma (n=155)<br /> Mutation frequency: 5.06%','Ovarian serous cystadenocarcinoma (n=316)<br /> Mutation frequency: 2.22%','Pancreatic adenocarcinoma (n=145)<br /> Mutation frequency: 1.37%','TCGA Pan-Cancer (n=~8k)<br /> Mutation frequency: 2.19%','Pheochromocytoma and Paraganglioma (n=179)<br /> Mutation frequency: 1.12%','Prostate adenocarcinoma (n=331)<br /> Mutation frequency: 0%','Rectum adenocarcinoma (n=66)<br /> Mutation frequency: 2.9%','Sarcoma (n=246)<br /> Mutation frequency: 0.794%','Skin Cutaneous Melanoma (n=192)<br /> Mutation frequency: 2.92%','Stomach adenocarcinoma (n=221)<br /> Mutation frequency: 6.57%','Stomach adenocarcinoma (Li X. C. et al.) (n=455)<br /> Mutation frequency: 6.81%','Stomach and Esophageal carcinoma (n=394)<br /> Mutation frequency: 7.81%','Testicular Germ Cell Tumors (n=148)<br /> Mutation frequency: 0.671%','Thyroid carcinoma (n=402)<br /> Mutation frequency: 0%','Uterine Corpus Endometrial Carcinoma (n=200)<br /> Mutation frequency: 2.82%','Uterine Carcinosarcoma (n=55)<br /> Mutation frequency: 0%','Uveal Melanoma (n=79)<br /> Mutation frequency: 0%'],
+  type: 'bar',
+  marker: {
+    color: ['#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#FFC409','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#EE5000','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF']
+  }
+};
+
+var data = [trace1];
+
+var layout = {
+  title: 'Mutation frequencies of <em>NBEA</em> across human cancers',
+  width: 880,
+  height: 320,
+  margin: {
+    b: 100
+  },
+  yaxis: {
+    title: 'Mutation freq (%)'
+  },
+  xaxis: {
+    title: 'Abbr. of human cancer types',
+    titlefont: {
+      size: 18,
+      color: 'black'
+    },
+    tickfont: {}
+  }
+};
+
+Plotly.newPlot('myDiv', data, layout);
+       
+
+</script>
+
+<div id='myDivUniqueID'></div>
+<script>  
+
+
+  
+var trace1 = {
+  x: ['p.L202R','p.Y253S','p.D510V','p.D834G','p.K995N','p.P1311R','p.T1587A','p.S1618G','p.E1653D','p.S1728C','p.N1947T','p.E2015G','p.R2080C','p.R2210Q','p.R2253W','p.E2327D','p.G2335R','p.E2357K','p.V2414I','p.F2474V','p.P2573T','p.I2609V','p.D2718H','p.S2726T','p.V2781A','p.S2827Y','p.Q2872K','p.G2899E'],
+  y: [1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  text: ['Not_Available<br />c.T>G; p.L202R <br />RadialSVM_pred:T; LR_pred:T','Laminin_G_3<br />c.A>C; p.Y253S <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.A>T; p.D510V <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.A>G; p.D834G <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.A>C; p.K995N <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.C>G; p.P1311R <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.A>G; p.T1587A <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.A>G; p.S1618G <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.A>C; p.E1653D <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.C>G; p.S1728C <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.A>C; p.N1947T <br />RadialSVM_pred:T; LR_pred:T','DUF1088<br />c.A>G; p.E2015G <br />RadialSVM_pred:T; LR_pred:T','DUF1088<br />c.C>T; p.R2080C <br />RadialSVM_pred:T; LR_pred:T','PH_BEACH<br />c.G>A; p.R2210Q <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.C>T; p.R2253W <br />RadialSVM_pred:T; LR_pred:T','Beach<br />c.A>C; p.E2327D <br />RadialSVM_pred:T; LR_pred:T','Beach<br />c.G>A; p.G2335R <br />RadialSVM_pred:T; LR_pred:T','Beach<br />c.G>A; p.E2357K <br />RadialSVM_pred:T; LR_pred:T','Beach<br />c.G>A; p.V2414I <br />RadialSVM_pred:T; LR_pred:T','Beach<br />c.T>G; p.F2474V <br />RadialSVM_pred:D; LR_pred:D','Not_Available<br />c.C>A; p.P2573T <br />RadialSVM_pred:T; LR_pred:D','Not_Available<br />c.A>G; p.I2609V <br />RadialSVM_pred:T; LR_pred:T','WD40<br />c.G>C; p.D2718H <br />RadialSVM_pred:T; LR_pred:T','WD40<br />c.T>A; p.S2726T <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.T>C; p.V2781A <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.C>A; p.S2827Y <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.C>A; p.Q2872K <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.G>A; p.G2899E <br />RadialSVM_pred:T; LR_pred:T'],
+  mode: 'markers',
+  name: 'Missense_Mutation',
+  marker: {
+    symbol: ['star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open'],
+    size: 8,
+    color: ['black','#7570B3','black','black','black','black','black','black','black','black','black','#D95F02','#D95F02','#66A61E','black','#1B9E77','#1B9E77','#1B9E77','#1B9E77','#1B9E77','black','black','#E6AB02','#E6AB02','black','black','black','black']
+  }
+};
+
+
+  
+var trace2 = {
+  x: ['p.QC888fs','p.K1120fs'],
+  y: [1,1],
+  text: ['Not_Available<br />c.GTGT>-; p.QC888fs <br />RadialSVM_pred:; LR_pred:','Not_Available<br />c.A>-; p.K1120fs <br />RadialSVM_pred:; LR_pred:'],
+  mode: 'markers',
+  name: 'Frame_Shift_Del',
+  marker: {
+    symbol: ['triangle-up-open-dot','triangle-up-open-dot'],
+    size: 8,
+    color: ['black','black']
+  }
+};
+
+
+  
+var trace3 = {
+  x: ['p.R2842*'],
+  y: [1],
+  text: ['Not_Available<br />c.C>T; p.R2842* <br />RadialSVM_pred:.; LR_pred:.'],
+  mode: 'markers',
+  name: 'Nonsense_Mutation',
+  marker: {
+    symbol: ['star-open-dot'],
+    size: 8,
+    color: ['black']
+  }
+};
+
+data = [trace1, trace2, trace3];
+
+var layout = {
+  title:'Mutation plot of <em>NBEA</em> in gastric cancer (Li X.C. et al.)',
+  height: 400,
+  width: 1000,
+  margin: {
+    b: 160
+  },
+  xaxis: {
+    title: 'Amino acid changes <br /> Note: different colors except black represent different Pfam domains. <br /> The black color for Pfam domain Not_Available. <br /> Functional prediction with SVM and LR from dbNSFP are provided.'
+  },
+  yaxis: {
+    title: 'Number of mutations'
+  }
+};
+Plotly.newPlot('myDivUniqueID', data, layout);
+
+
+
+</script>
+</body>
+

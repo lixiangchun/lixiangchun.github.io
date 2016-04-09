@@ -1,0 +1,30 @@
+<head>
+  <!-- Plotly.js -->
+   <script src="../TumorPortal_files/plotly-latest.min.js"></script>
+</head>
+
+<body>
+  <div id="myDiv" style="width: 480px; height: 400px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+
+var trace1 = {
+	x: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
+	y: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
+	mode: 'markers',
+	text: ['Missense_Mutation', 'Nonsense_Mutation','Splice_Site','Frame_Shift_Del','Frame_Shift_Ins','In_Frame_Del','In_Frame_Ins','Nonstop_Mutation','Stop_Codon_Del','Stop_Codon_Ins','Start_Codon_SNP','Start_Codon_Del','De_novo_Start_OutOfFrame','3\'UTR', '5\'UTR'],
+	marker: {
+		symbol: ['star-diamond-dot-open', 'star-open-dot', "y-down-open", 'triangle-up-open-dot', 'triangle-down-open-dot','hexagon2-open-dot', 'circle-x-open', 'hexagram-open', 'hexagram-open-dot', 'star-triangle-down-open-dot', 'star-triangle-down-open', 'star-square-open-dot','star-square-open', 'line-ne-open', 'line-nw-open'],
+		size: 12,
+		color: 'black'
+	}
+};
+var data = [trace1];
+var layout = {
+	title:'Symbols: https://plot.ly/javascript/reference/',
+	height: 400,
+	width: 600
+};
+Plotly.newPlot('myDiv', data, layout);
+
+  </script>
+</body>

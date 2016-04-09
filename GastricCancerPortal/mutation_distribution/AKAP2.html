@@ -1,0 +1,45 @@
+
+<head>
+<script src='../TumorPortal_files/plotly-latest.min.js'></script>
+</head>
+
+<body>
+<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<script>
+
+
+
+var trace1 = {
+  x: ['ACC','BLCA','BRCA','CESC','CHOL','COAD','COADREAD','DLBC','ESCA','GBM','GBMLGG','HNSC','KICH','KIPAN','KIRC','KIRP','LAML','LGG','LIHC','LUAD','LUSC','OV','PAAD','PANCAN','PCPG','PRAD','READ','SARC','SKCM','STAD','STAD_LiXCEtAl','STES','TGCT','THCA','UCEC','UCS','UVM'],
+  y: [NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA],
+  //hoverinfo: 'text',
+  text: ['ACC (n=83); mutation frequency: NA%','BLCA (n=112); mutation frequency: NA%','BRCA (n=957); mutation frequency: NA%','CESC (n=178); mutation frequency: NA%','CHOL (n=34); mutation frequency: NA%','COAD (n=126); mutation frequency: NA%','COADREAD (n=192); mutation frequency: NA%','DLBC (n=39); mutation frequency: NA%','ESCA (n=173); mutation frequency: NA%','GBM (n=290); mutation frequency: NA%','GBMLGG (n=575); mutation frequency: NA%','HNSC (n=263); mutation frequency: NA%','KICH (n=65); mutation frequency: NA%','KIPAN (n=643); mutation frequency: NA%','KIRC (n=417); mutation frequency: NA%','KIRP (n=161); mutation frequency: NA%','LAML (n=196); mutation frequency: NA%','LGG (n=285); mutation frequency: NA%','LIHC (n=196); mutation frequency: NA%','LUAD (n=187); mutation frequency: NA%','LUSC (n=155); mutation frequency: NA%','OV (n=316); mutation frequency: NA%','PAAD (n=145); mutation frequency: NA%','PANCAN (n=~8k); mutation frequency: NA%','PCPG (n=179); mutation frequency: NA%','PRAD (n=331); mutation frequency: NA%','READ (n=66); mutation frequency: NA%','SARC (n=246); mutation frequency: NA%','SKCM (n=192); mutation frequency: NA%','STAD (n=221); mutation frequency: NA%','STAD_LiXCEtAl (n=455); mutation frequency: NA%','STES (n=394); mutation frequency: NA%','TGCT (n=148); mutation frequency: NA%','THCA (n=402); mutation frequency: NA%','UCEC (n=200); mutation frequency: NA%','UCS (n=55); mutation frequency: NA%','UVM (n=79); mutation frequency: NA%'],
+  type: 'bar',
+  marker: {
+    color: '#75778A'
+  }
+};
+
+var data = [trace1];
+
+var layout = {
+  title: 'Mutation frequencies of <em>AKAP2</em> across <br /> human cancers',
+  width: 880,
+  height: 400,
+  yaxis: {
+    title: 'Mutation freq (%)'
+  },
+  xaxis: {
+    title: 'Abbr. of human cancer types',
+    titlefont: {
+      size: 18,
+      color: 'black'
+    },
+    tickfont: {}
+  }
+};
+
+Plotly.newPlot('myDiv', data, layout);
+       
+
+</script>

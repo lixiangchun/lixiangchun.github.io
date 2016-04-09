@@ -1,0 +1,105 @@
+
+<head>
+<script src='../TumorPortal_files/plotly-latest.min.js'></script>
+</head>
+
+<body>
+<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<script>
+
+
+
+var trace1 = {
+  x: ['ACC','BLCA','BRCA','CESC','CHOL','COAD','COADREAD','DLBC','ESCA','GBM','GBMLGG','HNSC','KICH','KIPAN','KIRC','KIRP','LAML','LGG','LIHC','LUAD','LUSC','OV','PAAD','PANCAN','PCPG','PRAD','READ','SARC','SKCM','STAD','STAD_LiXCEtAl','STES','TGCT','THCA','UCEC','UCS','UVM'],
+  y: [0,0.769230769230769,0.511770726714432,0.515463917525773,2.85714285714286,0.649350649350649,1.34529147982063,4.16666666666667,2.7027027027027,1.37931034482759,0.694444444444444,1.0752688172043,0,0.31055900621118,0.239808153477218,0.62111801242236,0.50761421319797,0,0.505050505050505,1.73913043478261,2.80898876404494,0.316455696202532,0.684931506849315,0.938894874557488,0,0.301204819277108,2.89855072463768,0.793650793650794,0.291545189504373,3.11418685121107,3.2967032967033,2.9535864978903,1.34228187919463,0.746268656716418,0.806451612903226,1.75438596491228,0],
+  //hoverinfo: 'text',
+  text: ['Adrenocortical carcinoma (n=83)<br /> Mutation frequency: 0%','Bladder urothelial carcinoma (n=112)<br /> Mutation frequency: 0.769%','Breast invasive carcinoma (n=957)<br /> Mutation frequency: 0.512%','Cervical and endocervical cancers (n=178)<br /> Mutation frequency: 0.515%','Cholangiocarcinoma (n=34)<br /> Mutation frequency: 2.86%','Colon adenocarcinoma (n=126)<br /> Mutation frequency: 0.649%','Colorectal adenocarcinoma (n=192)<br /> Mutation frequency: 1.35%','Lymphoid Neoplasm Diffuse Large B-cell Lymphoma (n=39)<br /> Mutation frequency: 4.17%','Esophageal carcinoma (n=173)<br /> Mutation frequency: 2.7%','Glioblastoma multiforme (n=290)<br /> Mutation frequency: 1.38%','Glioma (n=575)<br /> Mutation frequency: 0.694%','Head and Neck squamous cell carcinoma (n=263)<br /> Mutation frequency: 1.08%','Kidney Chromophobe (n=65)<br /> Mutation frequency: 0%','Pan-kidney cohort (KICH+KIRC+KIRP) (n=643)<br /> Mutation frequency: 0.311%','Kidney renal clear cell carcinoma (n=417)<br /> Mutation frequency: 0.24%','Kidney renal papillary cell carcinoma (n=161)<br /> Mutation frequency: 0.621%','Acute Myeloid Leukemia (n=196)<br /> Mutation frequency: 0.508%','Brain Lower Grade Glioma (n=285)<br /> Mutation frequency: 0%','Liver hepatocellular carcinoma (n=196)<br /> Mutation frequency: 0.505%','Lung adenocarcinoma (n=187)<br /> Mutation frequency: 1.74%','Lung squamous cell carcinoma (n=155)<br /> Mutation frequency: 2.81%','Ovarian serous cystadenocarcinoma (n=316)<br /> Mutation frequency: 0.316%','Pancreatic adenocarcinoma (n=145)<br /> Mutation frequency: 0.685%','TCGA Pan-Cancer (n=~8k)<br /> Mutation frequency: 0.939%','Pheochromocytoma and Paraganglioma (n=179)<br /> Mutation frequency: 0%','Prostate adenocarcinoma (n=331)<br /> Mutation frequency: 0.301%','Rectum adenocarcinoma (n=66)<br /> Mutation frequency: 2.9%','Sarcoma (n=246)<br /> Mutation frequency: 0.794%','Skin Cutaneous Melanoma (n=192)<br /> Mutation frequency: 0.292%','Stomach adenocarcinoma (n=221)<br /> Mutation frequency: 3.11%','Stomach adenocarcinoma (Li X. C. et al.) (n=455)<br /> Mutation frequency: 3.3%','Stomach and Esophageal carcinoma (n=394)<br /> Mutation frequency: 2.95%','Testicular Germ Cell Tumors (n=148)<br /> Mutation frequency: 1.34%','Thyroid carcinoma (n=402)<br /> Mutation frequency: 0.746%','Uterine Corpus Endometrial Carcinoma (n=200)<br /> Mutation frequency: 0.806%','Uterine Carcinosarcoma (n=55)<br /> Mutation frequency: 1.75%','Uveal Melanoma (n=79)<br /> Mutation frequency: 0%'],
+  type: 'bar',
+  marker: {
+    color: ['#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#FFC409','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#EE5000','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF']
+  }
+};
+
+var data = [trace1];
+
+var layout = {
+  title: 'Mutation frequencies of <em>BNC2</em> across human cancers',
+  width: 880,
+  height: 320,
+  margin: {
+    b: 100
+  },
+  yaxis: {
+    title: 'Mutation freq (%)'
+  },
+  xaxis: {
+    title: 'Abbr. of human cancer types',
+    titlefont: {
+      size: 18,
+      color: 'black'
+    },
+    tickfont: {}
+  }
+};
+
+Plotly.newPlot('myDiv', data, layout);
+       
+
+</script>
+
+<div id='myDivUniqueID'></div>
+<script>  
+
+
+  
+var trace1 = {
+  x: ['p.M953I','p.G928R','p.S749N','p.E727G','p.R720Q','p.F691L','p.S575I','p.S575R','p.S575G','p.Y363N','p.R185W'],
+  y: [1,1,1,1,1,1,1,5,1,1,1],
+  text: ['Not_Available<br />c.C>T; p.M953I <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.C>T; p.G928R <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.C>T; p.S749N <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.T>C; p.E727G <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.C>T; p.R720Q <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.A>G; p.F691L <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.C>A; p.S575I <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.T>G; p.S575R <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.T>C; p.S575G <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.A>T; p.Y363N <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.G>A; p.R185W <br />RadialSVM_pred:D; LR_pred:D'],
+  mode: 'markers',
+  name: 'Missense_Mutation',
+  marker: {
+    symbol: ['star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open'],
+    size: 8,
+    color: ['black','black','black','black','black','black','black','black','black','black','black']
+  }
+};
+
+
+  
+var trace2 = {
+  x: ['p.R536*'],
+  y: [1],
+  text: ['Not_Available<br />c.G>A; p.R536* <br />RadialSVM_pred:.; LR_pred:.'],
+  mode: 'markers',
+  name: 'Nonsense_Mutation',
+  marker: {
+    symbol: ['star-open-dot'],
+    size: 8,
+    color: ['black']
+  }
+};
+
+data = [trace1, trace2];
+
+var layout = {
+  title:'Mutation plot of <em>BNC2</em> in gastric cancer (Li X.C. et al.)',
+  height: 400,
+  width: 1000,
+  margin: {
+    b: 160
+  },
+  xaxis: {
+    title: 'Amino acid changes <br /> Note: different colors except black represent different Pfam domains. <br /> The black color for Pfam domain Not_Available. <br /> Functional prediction with SVM and LR from dbNSFP are provided.'
+  },
+  yaxis: {
+    title: 'Number of mutations'
+  }
+};
+Plotly.newPlot('myDivUniqueID', data, layout);
+
+
+
+</script>
+</body>
+

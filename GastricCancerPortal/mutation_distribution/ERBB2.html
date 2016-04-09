@@ -1,0 +1,90 @@
+
+<head>
+<script src='../TumorPortal_files/plotly-latest.min.js'></script>
+</head>
+
+<body>
+<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+<script>
+
+
+
+var trace1 = {
+  x: ['ACC','BLCA','BRCA','CESC','CHOL','COAD','COADREAD','DLBC','ESCA','GBM','GBMLGG','HNSC','KICH','KIPAN','KIRC','KIRP','LAML','LGG','LIHC','LUAD','LUSC','OV','PAAD','PANCAN','PCPG','PRAD','READ','SARC','SKCM','STAD','STAD_LiXCEtAl','STES','TGCT','THCA','UCEC','UCS','UVM'],
+  y: [0,6.92307692307692,1.63766632548618,4.12371134020619,2.85714285714286,1.2987012987013,2.69058295964126,0,4.86486486486486,0.344827586206897,0.173611111111111,2.1505376344086,1.51515151515152,0.93167701863354,0.719424460431655,1.24223602484472,0,0,0,1.73913043478261,1.12359550561798,1.26582278481013,0.684931506849315,1.38525473295367,0,0,5.79710144927536,0.396825396825397,0.291545189504373,2.42214532871972,3.2967032967033,3.37552742616034,2.01342281879195,0.248756218905473,1.20967741935484,1.75438596491228,0],
+  //hoverinfo: 'text',
+  text: ['Adrenocortical carcinoma (n=83)<br /> Mutation frequency: 0%','Bladder urothelial carcinoma (n=112)<br /> Mutation frequency: 6.92%','Breast invasive carcinoma (n=957)<br /> Mutation frequency: 1.64%','Cervical and endocervical cancers (n=178)<br /> Mutation frequency: 4.12%','Cholangiocarcinoma (n=34)<br /> Mutation frequency: 2.86%','Colon adenocarcinoma (n=126)<br /> Mutation frequency: 1.3%','Colorectal adenocarcinoma (n=192)<br /> Mutation frequency: 2.69%','Lymphoid Neoplasm Diffuse Large B-cell Lymphoma (n=39)<br /> Mutation frequency: 0%','Esophageal carcinoma (n=173)<br /> Mutation frequency: 4.86%','Glioblastoma multiforme (n=290)<br /> Mutation frequency: 0.345%','Glioma (n=575)<br /> Mutation frequency: 0.174%','Head and Neck squamous cell carcinoma (n=263)<br /> Mutation frequency: 2.15%','Kidney Chromophobe (n=65)<br /> Mutation frequency: 1.52%','Pan-kidney cohort (KICH+KIRC+KIRP) (n=643)<br /> Mutation frequency: 0.932%','Kidney renal clear cell carcinoma (n=417)<br /> Mutation frequency: 0.719%','Kidney renal papillary cell carcinoma (n=161)<br /> Mutation frequency: 1.24%','Acute Myeloid Leukemia (n=196)<br /> Mutation frequency: 0%','Brain Lower Grade Glioma (n=285)<br /> Mutation frequency: 0%','Liver hepatocellular carcinoma (n=196)<br /> Mutation frequency: 0%','Lung adenocarcinoma (n=187)<br /> Mutation frequency: 1.74%','Lung squamous cell carcinoma (n=155)<br /> Mutation frequency: 1.12%','Ovarian serous cystadenocarcinoma (n=316)<br /> Mutation frequency: 1.27%','Pancreatic adenocarcinoma (n=145)<br /> Mutation frequency: 0.685%','TCGA Pan-Cancer (n=~8k)<br /> Mutation frequency: 1.39%','Pheochromocytoma and Paraganglioma (n=179)<br /> Mutation frequency: 0%','Prostate adenocarcinoma (n=331)<br /> Mutation frequency: 0%','Rectum adenocarcinoma (n=66)<br /> Mutation frequency: 5.8%','Sarcoma (n=246)<br /> Mutation frequency: 0.397%','Skin Cutaneous Melanoma (n=192)<br /> Mutation frequency: 0.292%','Stomach adenocarcinoma (n=221)<br /> Mutation frequency: 2.42%','Stomach adenocarcinoma (Li X. C. et al.) (n=455)<br /> Mutation frequency: 3.3%','Stomach and Esophageal carcinoma (n=394)<br /> Mutation frequency: 3.38%','Testicular Germ Cell Tumors (n=148)<br /> Mutation frequency: 2.01%','Thyroid carcinoma (n=402)<br /> Mutation frequency: 0.249%','Uterine Corpus Endometrial Carcinoma (n=200)<br /> Mutation frequency: 1.21%','Uterine Carcinosarcoma (n=55)<br /> Mutation frequency: 1.75%','Uveal Melanoma (n=79)<br /> Mutation frequency: 0%'],
+  type: 'bar',
+  marker: {
+    color: ['#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#FFC409','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#EE5000','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF','#4D87CF']
+  }
+};
+
+var data = [trace1];
+
+var layout = {
+  title: 'Mutation frequencies of <em>ERBB2</em> across human cancers',
+  width: 880,
+  height: 320,
+  margin: {
+    b: 100
+  },
+  yaxis: {
+    title: 'Mutation freq (%)'
+  },
+  xaxis: {
+    title: 'Abbr. of human cancer types',
+    titlefont: {
+      size: 18,
+      color: 'black'
+    },
+    tickfont: {}
+  }
+};
+
+Plotly.newPlot('myDiv', data, layout);
+       
+
+</script>
+
+<div id='myDivUniqueID'></div>
+<script>  
+
+
+  
+var trace1 = {
+  x: ['p.P39L','p.S310Y','p.S310F','p.R678Q','p.D769Y','p.G776V','p.L841V','p.T862A','p.S974F'],
+  y: [1,2,3,4,1,1,1,1,1],
+  text: ['Not_Available<br />c.C>T; p.P39L <br />RadialSVM_pred:T; LR_pred:T','Furin-like<br />c.C>A; p.S310Y <br />RadialSVM_pred:T; LR_pred:T','Furin-like<br />c.C>T; p.S310F <br />RadialSVM_pred:T; LR_pred:T','Not_Available<br />c.G>A; p.R678Q <br />RadialSVM_pred:T; LR_pred:T','Pkinase_Tyr<br />c.G>T; p.D769Y <br />RadialSVM_pred:D; LR_pred:D','Pkinase_Tyr<br />c.G>T; p.G776V <br />RadialSVM_pred:D; LR_pred:D','Pkinase_Tyr<br />c.C>G; p.L841V <br />RadialSVM_pred:T; LR_pred:T','Pkinase_Tyr<br />c.A>G; p.T862A <br />RadialSVM_pred:T; LR_pred:T','Pkinase_Tyr<br />c.C>T; p.S974F <br />RadialSVM_pred:T; LR_pred:T'],
+  mode: 'markers',
+  name: 'Missense_Mutation',
+  marker: {
+    symbol: ['star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open','star-diamond-dot-open'],
+    size: 8,
+    color: ['black','#1B9E77','#1B9E77','black','#7570B3','#7570B3','#7570B3','#7570B3','#7570B3']
+  }
+};
+
+data = [trace1];
+
+var layout = {
+  title:'Mutation plot of <em>ERBB2</em> in gastric cancer (Li X.C. et al.)',
+  height: 400,
+  width: 1000,
+  margin: {
+    b: 160
+  },
+  xaxis: {
+    title: 'Amino acid changes <br /> Note: different colors except black represent different Pfam domains. <br /> The black color for Pfam domain Not_Available. <br /> Functional prediction with SVM and LR from dbNSFP are provided.'
+  },
+  yaxis: {
+    title: 'Number of mutations'
+  }
+};
+Plotly.newPlot('myDivUniqueID', data, layout);
+
+
+
+</script>
+</body>
+
