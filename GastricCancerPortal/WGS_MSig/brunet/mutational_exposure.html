@@ -1,0 +1,59 @@
+
+<head>
+<script src='../../TumorPortal_files/plotly-latest.min.js'></script>
+</head>
+
+<body>
+<div id="myDiv" style="width: 780px; height: 600px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+<script>
+
+
+var ultra = {
+  values: [32242.9497058655,42408.8916933474,2683.43936297806,106440.869612429,13354.6916849544,7595.74920890364,125044.799636258,118700.785717114,119678.310259185],
+  labels: ['MSig 1','MSig 2','MSig 3','MSig 4','MSig 5','MSig 6','MSig 7','MSig 8','MSig 9'],
+  domain: {
+    x: [0, 0.4], 
+    y: [0.4, 1]
+  },
+  name: 'Ultra-mutated',
+  //hoverinfo: 'label+percent+name',
+  type: 'pie'
+};
+
+
+var hyper = {
+  values: [140267.333334477,65858.1492672694,44026.341356513,53002.5008603771,45544.3643776036,66762.2238430199,77063.3408897677,48593.1579359424,65938.9048918331],
+  labels: ['MSig 1','MSig 2','MSig 3','MSig 4','MSig 5','MSig 6','MSig 7','MSig 8','MSig 9'],
+  domain: {
+    x: [0.6, 1], 
+    y: [0.4, 1]
+  },
+  name: 'Hyper-mutated',
+  //hoverinfo: 'label+percent+name',
+  type: 'pie'
+};
+
+
+var regular = {
+  values: [114023.312754009,121690.254303651,63886.944444274,51177.1769043811,157032.371481986,168075.43095827,40652.9746624491,36629.8876461346,48057.8432070071],
+  labels: ['MSig 1','MSig 2','MSig 3','MSig 4','MSig 5','MSig 6','MSig 7','MSig 8','MSig 9'],
+  domain: {
+    x: [0.25, 0.75], 
+    y: [0, 0.6]
+  },
+  name: 'Regular-mutated',
+  //hoverinfo: 'label+percent+name',
+  type: 'pie'
+};
+
+
+  var data = [ultra, hyper, regular];
+  var layout = {
+    title: 'Mutational exposures in <br /> Ultra-, Hyper- and Regular-mutated<br /> gastric cancers'
+  };
+  Plotly.newPlot('myDiv', data, layout);
+
+
+</script>
+</body>
+

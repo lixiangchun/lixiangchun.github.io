@@ -1,0 +1,98 @@
+
+<head>
+  <script src="../../TumorPortal_files/plotly-latest.min.js"></script>
+</head>
+<body>
+  <div id="myDiv" style="width: 800px; height: 360px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+
+
+var trace9 = {
+  x: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+  y: [0.233130466052641,0.0669197206141863,0,0.151891836838124,0.521042874225212,1.46364943284612,0.320141010180695,3.18754595408056,0.131065884459917,0.290399570043267,0,0.616517733595263,0.185602244500324,0.0985247027334482,0,0.368445478047794],
+  marker: {
+    color: '#1B9E77',
+  },
+  name: 'C>A',
+  type: 'bar',
+  hoverinfo: 'text',
+  text: ['C>A mutation in ACA<br /> Percentage:0.23%','C>A mutation in ACC<br /> Percentage:0.07%','C>A mutation in ACG<br /> Percentage:0%','C>A mutation in ACT<br /> Percentage:0.15%','C>A mutation in CCA<br /> Percentage:0.52%','C>A mutation in CCC<br /> Percentage:1.46%','C>A mutation in CCG<br /> Percentage:0.32%','C>A mutation in CCT<br /> Percentage:3.19%','C>A mutation in GCA<br /> Percentage:0.13%','C>A mutation in GCC<br /> Percentage:0.29%','C>A mutation in GCG<br /> Percentage:0%','C>A mutation in GCT<br /> Percentage:0.62%','C>A mutation in TCA<br /> Percentage:0.19%','C>A mutation in TCC<br /> Percentage:0.1%','C>A mutation in TCG<br /> Percentage:0%','C>A mutation in TCT<br /> Percentage:0.37%'],
+};
+
+var trace10 = {
+  x: [17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32],
+  y: [0.239635099686666,0.0702439067038464,0,0.215446762808128,0.0262439965273002,0.0588127246600399,0,0.0265464697053557,0.0434586292346168,0.13139422555262,0,0.107579554809132,0.0803065941272082,0.0607950522830864,0,0.272660879014084],
+  marker: {
+    color: '#D95F02',
+  },
+  name: 'C>G',
+  type: 'bar',
+  hoverinfo: 'text',
+  text: ['C>G mutation in ACA<br /> Percentage:0.24%','C>G mutation in ACC<br /> Percentage:0.07%','C>G mutation in ACG<br /> Percentage:0%','C>G mutation in ACT<br /> Percentage:0.22%','C>G mutation in CCA<br /> Percentage:0.03%','C>G mutation in CCC<br /> Percentage:0.06%','C>G mutation in CCG<br /> Percentage:0%','C>G mutation in CCT<br /> Percentage:0.03%','C>G mutation in GCA<br /> Percentage:0.04%','C>G mutation in GCC<br /> Percentage:0.13%','C>G mutation in GCG<br /> Percentage:0%','C>G mutation in GCT<br /> Percentage:0.11%','C>G mutation in TCA<br /> Percentage:0.08%','C>G mutation in TCC<br /> Percentage:0.06%','C>G mutation in TCG<br /> Percentage:0%','C>G mutation in TCT<br /> Percentage:0.27%'],
+};
+
+var trace11 = {
+  x: [33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48],
+  y: [2.53129165982579,0.698051451691873,1.81223226104624,0.758344044262031,0.321698546383435,0.439129123340509,1.77226869851897,0.452447698600038,1.40163827753472,1.72775451422392,2.11907827321907,1.40332757475242,0.169227222855965,0.210497064917401,0.830167801510876,0.426166083857137],
+  marker: {
+    color: '#7570B3',
+  },
+  name: 'C>T',
+  type: 'bar',
+  hoverinfo: 'text',
+  text: ['C>T mutation in ACA<br /> Percentage:2.53%','C>T mutation in ACC<br /> Percentage:0.7%','C>T mutation in ACG<br /> Percentage:1.81%','C>T mutation in ACT<br /> Percentage:0.76%','C>T mutation in CCA<br /> Percentage:0.32%','C>T mutation in CCC<br /> Percentage:0.44%','C>T mutation in CCG<br /> Percentage:1.77%','C>T mutation in CCT<br /> Percentage:0.45%','C>T mutation in GCA<br /> Percentage:1.4%','C>T mutation in GCC<br /> Percentage:1.73%','C>T mutation in GCG<br /> Percentage:2.12%','C>T mutation in GCT<br /> Percentage:1.4%','C>T mutation in TCA<br /> Percentage:0.17%','C>T mutation in TCC<br /> Percentage:0.21%','C>T mutation in TCG<br /> Percentage:0.83%','C>T mutation in TCT<br /> Percentage:0.43%'],
+};
+
+var trace12 = {
+  x: [49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64],
+  y: [0.144793120035933,0.185083790476576,0.142594758710867,1.24369308874886,0.125796842260955,0.54581333017715,0.175096296756528,0.218080405903578,0.116862167559529,0.138274674644932,0.293841506148304,0.197723837997024,0.844184946185053,0.0746271882383077,0.106993368253196,1.21035001831275],
+  marker: {
+    color: '#E7298A',
+  },
+  name: 'T>A',
+  type: 'bar',
+  hoverinfo: 'text',
+  text: ['T>A mutation in ATA<br /> Percentage:0.14%','T>A mutation in ATC<br /> Percentage:0.19%','T>A mutation in ATG<br /> Percentage:0.14%','T>A mutation in ATT<br /> Percentage:1.24%','T>A mutation in CTA<br /> Percentage:0.13%','T>A mutation in CTC<br /> Percentage:0.55%','T>A mutation in CTG<br /> Percentage:0.18%','T>A mutation in CTT<br /> Percentage:0.22%','T>A mutation in GTA<br /> Percentage:0.12%','T>A mutation in GTC<br /> Percentage:0.14%','T>A mutation in GTG<br /> Percentage:0.29%','T>A mutation in GTT<br /> Percentage:0.2%','T>A mutation in TTA<br /> Percentage:0.84%','T>A mutation in TTC<br /> Percentage:0.07%','T>A mutation in TTG<br /> Percentage:0.11%','T>A mutation in TTT<br /> Percentage:1.21%'],
+};
+
+var trace13 = {
+  x: [65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80],
+  y: [5.73080728267439,2.3236567370968,7.0209405097785,2.11444099258117,4.0132385841696,2.71121875341151,8.06004136020209,4.03712303488008,5.74067901911186,1.83680995319985,5.3016063454336,3.35196537691378,1.83955316757726,2.14228543273485,1.98914601203234,3.55433251768761],
+  marker: {
+    color: '#66A61E',
+  },
+  name: 'T>C',
+  type: 'bar',
+  hoverinfo: 'text',
+  text: ['T>C mutation in ATA<br /> Percentage:5.73%','T>C mutation in ATC<br /> Percentage:2.32%','T>C mutation in ATG<br /> Percentage:7.02%','T>C mutation in ATT<br /> Percentage:2.11%','T>C mutation in CTA<br /> Percentage:4.01%','T>C mutation in CTC<br /> Percentage:2.71%','T>C mutation in CTG<br /> Percentage:8.06%','T>C mutation in CTT<br /> Percentage:4.04%','T>C mutation in GTA<br /> Percentage:5.74%','T>C mutation in GTC<br /> Percentage:1.84%','T>C mutation in GTG<br /> Percentage:5.3%','T>C mutation in GTT<br /> Percentage:3.35%','T>C mutation in TTA<br /> Percentage:1.84%','T>C mutation in TTC<br /> Percentage:2.14%','T>C mutation in TTG<br /> Percentage:1.99%','T>C mutation in TTT<br /> Percentage:3.55%'],
+};
+
+var trace14 = {
+  x: [81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96],
+  y: [0.0942804661569964,0.176992792326151,0.20198140548093,0.290877350464768,0.184351649397846,1.05776499802952,1.27535919465432,0.810145946528461,0,0,0.226703180267078,0.624484936035485,0.0639293107261219,0.0625474815442491,0.476770618981812,0.880835149641394],
+  marker: {
+    color: '#E6AB02',
+  },
+  name: 'T>G',
+  type: 'bar',
+  hoverinfo: 'text',
+  text: ['T>G mutation in ATA<br /> Percentage:0.09%','T>G mutation in ATC<br /> Percentage:0.18%','T>G mutation in ATG<br /> Percentage:0.2%','T>G mutation in ATT<br /> Percentage:0.29%','T>G mutation in CTA<br /> Percentage:0.18%','T>G mutation in CTC<br /> Percentage:1.06%','T>G mutation in CTG<br /> Percentage:1.28%','T>G mutation in CTT<br /> Percentage:0.81%','T>G mutation in GTA<br /> Percentage:0%','T>G mutation in GTC<br /> Percentage:0%','T>G mutation in GTG<br /> Percentage:0.23%','T>G mutation in GTT<br /> Percentage:0.62%','T>G mutation in TTA<br /> Percentage:0.06%','T>G mutation in TTC<br /> Percentage:0.06%','T>G mutation in TTG<br /> Percentage:0.48%','T>G mutation in TTT<br /> Percentage:0.88%'],
+};
+var data = [trace9,trace10,trace11,trace12,trace13,trace14];
+var layout = {
+  yaxis: {
+    title: 'Percentage of <br />mutations',
+    range: [0, 30],
+  },
+  xaxis: {
+    showticklabels: true
+  },
+  //barmode: 'group',
+  showlegend: true,
+  shapes: [{type: 'rect', xref: 'x', x0: 0, x1: 16 + 0.25, y0:0,y1:30,fillcolor:'#1B9E77',opacity:0.3,line:{color:'#1B9E77'}},{type:'rect',xref:'x',x0:16*(2-1)+0.75, x1:16*2+0.25,y0:0,y1:30,fillcolor:'#D95F02', opacity:0.2,line:{color:'#D95F02'}},{type:'rect',xref:'x',x0:16*(3-1)+0.75, x1:16*3+0.25,y0:0,y1:30,fillcolor:'#7570B3', opacity:0.2,line:{color:'#7570B3'}},{type:'rect',xref:'x',x0:16*(4-1)+0.75, x1:16*4+0.25,y0:0,y1:30,fillcolor:'#E7298A', opacity:0.2,line:{color:'#E7298A'}},{type:'rect',xref:'x',x0:16*(5-1)+0.75, x1:16*5+0.25,y0:0,y1:30,fillcolor:'#66A61E', opacity:0.2,line:{color:'#66A61E'}},{type:'rect',xref:'x',x0:16*(6-1)+0.75, x1:16*6+0.25,y0:0,y1:30,fillcolor:'#E6AB02', opacity:0.2,line:{color:'#E6AB02'}}]
+};
+Plotly.newPlot('myDiv', data, layout);
+
+  </script>
+</body>
+

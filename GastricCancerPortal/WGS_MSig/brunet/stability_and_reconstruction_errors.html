@@ -1,0 +1,59 @@
+<head>
+  <script src="../../TumorPortal_files/plotly-latest.min.js"></script>
+</head>
+
+<body>
+  <div id="myDiv" style="width: 680px; height: 360px;"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+
+  var stability = {
+    x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    y: [0.999988829129381, 0.999951804717773, 0.99882339146966, 0.803618720549788, 0.71066410601313, 0.806867973768772, 0.878844612378784, 0.638935827201967, 0.90403489688862, 0.713386759272822, 0.720171880607377, 0.64603166729516],
+    name: 'Stability',
+    type: 'scatter',
+    marker: {
+      size: 12,
+	  symbol: 'circle',
+		grid: false
+    }
+  };
+  var reconstruction_error = {
+    x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    y: [39533.6685593946, 22744.7954023645, 18583.6615848343, 16443.868731192, 16170.4539852291, 12272.1268434839, 7139.01055994319, 7708.98942613599, 4956.91120023694, 5743.51563577785, 5583.1595349088, 6599.56502515348],
+    name: 'Reconstruction error',
+    yaxis: 'y2',
+    type: 'scatter',
+    marker: {
+		size: 12,
+		grid: false
+    }
+  };
+
+  var data = [stability, reconstruction_error];
+  
+  var layout = {
+    title: 'Stability & Reconstruction errors',
+    yaxis: {
+      title: 'Stability'
+    },
+    yaxis2: {
+      title: 'Reconstruction error',
+      overlaying: 'y',
+      side: 'right'
+    },
+    xaxis: {
+      title: 'NMF rank <br /> Optimal rank = 9 (small error and relatively high stability)'
+    },
+    legend: {
+      x: 0.3,
+      y: 0.95,
+      bgcolor: "#E2E2E2",
+      bordercolor: "#FFFFFF",
+      borderwidth: 2
+    }
+  };
+
+Plotly.newPlot('myDiv', data, layout);
+
+  </script>
+</body>
