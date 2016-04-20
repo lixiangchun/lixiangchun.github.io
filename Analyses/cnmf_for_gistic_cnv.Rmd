@@ -1,0 +1,126 @@
+---
+title: "Molecular subtyping with GISTIC2 results"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Prepare as input gistic score for cNMF
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+transform.gistic.scores.as.cnmf.input <- function(x)
+{
+  x1 <- x
+  x2 <- x
+  x1[x1<0] <- 0
+  x2[x2>0] <- 0
+  rbind(x1, -x2)
+}
+
+infile <- 'all_lesions.conf_95.txt'
+d <- read.table(infile, header=TRUE,sep="\t", stringsAsFactors=FALSE)
+
+score.idx <- grepl('CN values',d[,1]) == TRUE
+status.idx <- grepl('CN values',d[,1]) == FALSE
+gistic.scores <- d[score.idx, 10:(ncol(d) - 1)] ## The last column in d is NA
+cna.statuses <- d[status.idx, 10:(ncol(d) - 1)] 
+
+score.cyto.names <- paste(paste(sub("\\s+",'', d[score.idx, 2])), 1:(length(score.idx)/2), sep="__")
+status.cyto.names <- paste(paste(sub("\\s+",'', d[status.idx, 2])), 1:(length(status.idx)/2), sep="__")
+sample.names <- colnames(d)[10:(ncol(d) - 1)]
+
+transformed.gistic.scores <- transform.gistic.scores.as.cnmf.input(gistic.scores)
+transformed.score.cyto.names <- c(paste(score.cyto.names, 'Pos', sep="__"), paste(score.cyto.names, "Neg", sep="__"))
+
+## Export preprocessed data to files for cNMF
+write.table(transformed.gistic.scores, file='transformed.gistic.scores.txt', sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+write.table(transformed.score.cyto.names, file='transformed.score.cyto.names.txt', sep="\t", quote=FALSE, row.names = FALSE, col.names = FALSE)
+
+write.table(cna.statuses, file='cna.statuses.txt', sep="\t", quote=FALSE, row.names=FALSE, col.names=FALSE)
+write.table(status.cyto.names, file='status.cyto.names.txt', sep="\t", quote=FALSE, row.names = FALSE, col.names = FALSE)
+
+write.table(sample.names, file="sample.names.txt", quote=FALSE, row.names = FALSE, col.names = FALSE)
+```
+
+### Running cNMF (On BGI server)
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+#!/bin/bash
+rowNameFile='transformed.score.cyto.names.txt'           ## row names must be unique!
+##rowNameFile='status.cyto.names.txt'
+colNameFile='sample.names.txt'         ## column names must be unique!
+inputFile='transformed.gistic.scores.txt'       ## input matrix
+##inputFile='cna.statuses.txt'
+kstart=2                            ## nmf rank
+kend=10                             ## nmf rank
+nloop=100                           ## nloop for each rank, e.g. 100, 50 etc.
+algorithm=als            # Algorithms: brunet, sNMFR, gdclsNMF, mult, als
+transposeInputMatrix=0   # Whether transpose input matrix: 1 - transpose, 0 - do not transpose
+verbose=1
+maxiter=10000000
+
+MCRroot=/ifshk1/BC_CANCER/03user/lixiangchun/Software/INSTALL/MCR_R2013a/INSTALL/v81
+DES_PATH=/ifshk1/BC_CANCER/03user/lixiangchun/iCGA/v0.02/decipherExpressionSignatures
+
+# The proto-type of matlab function is:
+# function decipherExpressionSignatures(rowNameFile, colNameFile, inputFile, kstart, kend, nloop, algorithm, transposeInputMatrix, verbose, maxiter)
+
+bash $DES_PATH/run_decipherExpressionSignatures.sh $MCRroot $rowNameFile $colNameFile $inputFile $kstart $kend $nloop $algorithm $transposeInputMatrix $verbose $maxiter
+
+# If use prefer a little bit faster version, try the following:
+#bash $DES_PATH/run_cnmfexpression.sh $MCRroot $rowNameFile $colNameFile $inputFile $kstart $kend $nloop $algorithm $transposeInputMatrix $verbose $maxiter
+```
+
+### Visualising cNMF results with MATLAB
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+> load Output.mat;
+> consplot(ordcons, coph, rho)
+
+function consplot(cons, coph, rho)
+
+k0 = 2;
+% 
+% plotting cNMF consensus matrices
+% Usage: consplot(ordcons, coph, rho)
+%
+
+[k,m,m] = size(cons);
+j = 1;
+nr = 3;
+nc = 4;
+
+if size(cons,1) > nr * nc
+    nr = sqrt(size(cons,1) + 3);
+    nc = nr;
+end
+
+for i = 1:(k-1)
+	subplot(nr, nc,i)
+	%subplot(size(cons,1)/2,2,i)
+	u = cons(k0+i-1,:,:);
+	imagesc(squeeze(u));
+	title(sprintf('k = %d', k0+i-1));
+    j = i;
+end
+
+subplot(nr,nc,j+1)
+plot(coph, '-o')
+xlabel('cNMF rank')
+ylabel('Cophenetic coeff.')
+%ylim([0.7,1])
+xlim([2, size(coph,2)])
+grid on
+
+subplot(nr,nc,j+2)
+plot(rho, '-o')
+xlabel('cNMF rank')
+%ylabel('\rho')
+%ylabel('\tau')
+ylabel('Dispersion coeff.')
+%ylim([0.7,1])
+xlim([2, size(rho,2)])
+grid on
+```
