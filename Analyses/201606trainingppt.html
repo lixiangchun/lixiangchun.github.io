@@ -1277,20 +1277,16 @@ oncoprinter(xx, cols, legend.panel)
 
 <pre><code class="r"># Assign to new variable
 d &lt;- RegularMutatedGC
-
 # Select specific items
 d &lt;- d[d$Sex!=&quot;&quot; &amp; d$Stage!=&quot;&quot; &amp; (d$Lauren_subtype == &quot;diffuse&quot; | d$Lauren_subtype == &#39;intestinal&#39;),]
-
 # Make sure that the data type is appropriate
 # Use F as reference group
 d$Sex &lt;- factor(d$Sex, levels=c(&#39;F&#39;,&#39;M&#39;))
-
 # Use intestinal as reference group
 d$Lauren_subtype &lt;- factor(d$Lauren_subtype, levels=c(&#39;intestinal&#39;, &#39;diffuse&#39;))
 d$Stage &lt;- factor(d$Stage, levels=c(&#39;Early&#39;,&#39;Late&#39;))
 d$nmf_clustid &lt;- factor(d$nmf_clustid, levels=c(1,2))
 d$cohort &lt;- d$Study
-
 # Only the TCGA and Tianjin cohorts have both Surv_time and vital_status. The other 3 cohorts did not contribute to prognosis analysis.
 d$cohort[d$cohort!=&#39;TCGA&#39;] &lt;- &#39;Asian&#39;
 d$cohort &lt;- factor(d$cohort,levels=c(&#39;Asian&#39;,&#39;TCGA&#39;))
