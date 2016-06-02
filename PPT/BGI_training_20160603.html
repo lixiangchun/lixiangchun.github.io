@@ -122,32 +122,8 @@
 <li>Rstudio: <a href='https://www.rstudio.com/' title=''>https://www.rstudio.com/</a> (非常好用的R编程环境)</li>
 <li>CRAN: <a href='https://cran.r-project.org/' title=''>https://cran.r-project.org/</a></li>
 <li>Bioconductor: <a href='https://www.bioconductor.org/' title=''>https://www.bioconductor.org/</a></li>
-<li>Github: <a href='https://github.com/' title=''>https://github.com/</a></li>
+<li>Github: <a href='https://github.com/' title=''>https://github.com/</a> <code>操作：下载安装Rstudio</code></li>
 </ol>
-
-<p><strong>操作：下载安装Rstudio</strong></p>
-
-</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>## R语言简介</h2></hgroup><article  id="r">
-
-<p>1.1 交互式方式使用R (Unix环境下)</p>
-
-<pre class = 'prettyprint lang-r'>$ mkdir work  ## 新建一个目录
-$ cd work     ## 进入到新建目录
-$ R           ## 在Terminal中运行R
-&gt; q()         ## 退出R</pre>
-
-<p>1.2 获取函数的帮助文档</p>
-
-<pre class = 'prettyprint lang-r'>&gt; help(lm)               ## 查看lm的帮助文档
-&gt; ?lm                    ## 查看lm的帮助文档(同上)
-&gt; library(survival)      ## 加载一个R包
-&gt; help(package=survival) ## 查看survival包的整体概要</pre>
-
-<p>1.3 查看和删除内存中的变量</p>
-
-<pre class = 'prettyprint lang-r'>&gt; x = c(1,2,3)
-&gt; ls()           ## 查看有哪些变量
-&gt; rm(x, y)       ## 删除指定变量</pre>
 
 </article></slide><slide class=''><hgroup><h2>安装必要的软件包</h2></hgroup><article >
 
@@ -169,7 +145,28 @@ install_github(&quot;lixiangchun/plotr&quot;)
 library(&quot;lxctk&quot;)
 library(&quot;plotr&quot;)</pre>
 
-</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>R语言简介</h2></hgroup><article  id="r-1">
+</article></slide><slide class='segue dark nobackground'><hgroup class = 'auto-fadein'><h2>R语言简介</h2></hgroup><article  id="r">
+
+</article></slide><slide class=''><hgroup><h2>初识R语言</h2></hgroup><article  id="r">
+
+<p>1.1 交互式方式使用R (Unix环境下)</p>
+
+<pre class = 'prettyprint lang-r'>$ mkdir work  ## 新建一个目录
+$ cd work     ## 进入到新建目录
+$ R           ## 在Terminal中运行R
+&gt; q()         ## 退出R</pre>
+
+<p>1.2 获取函数的帮助文档</p>
+
+<pre class = 'prettyprint lang-r'>&gt; ?lm                    ## 查看lm的帮助文档(同上)
+&gt; library(survival)      ## 加载一个R包
+&gt; help(package=survival) ## 查看survival包的整体概要</pre>
+
+<p>1.3 查看和删除内存中的变量</p>
+
+<pre class = 'prettyprint lang-r'>&gt; x = c(1,2,3)
+&gt; ls()           ## 查看有哪些变量
+&gt; rm(x, y)       ## 删除指定变量</pre>
 
 </article></slide><slide class=''><hgroup><h2>第2部分 - 简单操作，数字和向量</h2></hgroup><article  id="2---">
 
