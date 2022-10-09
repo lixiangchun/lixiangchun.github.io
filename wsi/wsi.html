@@ -82,6 +82,7 @@
         //let modelPath = quantizedSelectEl.value === "no" ? 'https://huggingface.co/rocca/openai-clip-js/resolve/main/clip-image-vit-32-float32.onnx' : 'https://huggingface.co/rocca/openai-clip-js/resolve/main/clip-image-vit-32-uint8.onnx';
         //const session = await ort.InferenceSession.create(modelPath, { executionProviders: [backendSelectEl.value] });
         console.log("Loading models...");
+		document.getElementById("modelLoadingTime").innerHTML = "Loading models...";
 		var tic = new Date().getTime();
 		const session_feature = await ort.InferenceSession.create('onnx_swav_imagenet_layer2.onnx', {executionProviders: [backendSelectEl.value], graphOptimizationLevel: 'all'});
 		const session = await ort.InferenceSession.create('TransWSI-0.4Mb.onnx', {executionProviders: [backendSelectEl.value], graphOptimizationLevel: 'all'});
