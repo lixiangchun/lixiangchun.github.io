@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WSI Classification Demo</title>
+	<h4 style="color:#04AA6D">A demo website for running WSI classification model</h4>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.12.0/dist/ort.js"></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+    <div>
+	  <!-- imgur.com url (ideally 224x224): <input id="imgUrlInput" value="https://i.imgur.com/RKsLoNB.png"> -->
+	  <b style="color:#1661AB">Image path (Online URL or local file):</b> <input id="imgUrlInput" value="cheetah.jpg">
+      <!-- karpathy: https://i.imgur.com/WEIKDpX.jpg -->
+      <!-- 512px astronaut: https://i.imgur.com/ec4Ao4s.png -->
+      <br>
+	  <b style="color:#0098DE">Backend for running onnxruntime-web:</b> <select id="backendSelectEl">
+        <option>wasm</option>
+        <option>webgl (doesn't work yet)</option>
+      </select>
+      <!-- <br>
+      quantized: <select id="quantizedSelectEl">
+        <option value="no">no</option>
+        <option value="yes">yes (4x smaller model, but currently the embeddings are inaccurate - see readme)</option>
+      </select>
+	  -->
+      <br>
+	  <button id="startBtn" onclick="main()"><b style="color:#DC3023">Run Inference</b></button>
+    </div>
+	<div>
+	<input type="file" id="files" style="display: none" onchange="fileImport()">
+	<input type="button" id="fileImport" value="Import Local File" style="color:#686A67" onclick="filed()">
+      Loading file:<progress id="progre" value="0" style="width: 300px"></progress>
+    </div>
+
+	<!-- <p><a href="https://github.com/josephrocca/openai-clip-js">github repo</a> - <a href="https://huggingface.co/rocca/openai-clip-js/tree/main">huggingface repo</a></p> -->
+	<p><a href="https://github.com/josephrocca/openai-clip-js">Partially adapted from: https://github.com/josephrocca/openai-clip-js.</a></p>
+
+	<div id="imageLoadingTime"></div>
+	<div id="modelLoadingTime"></div>
+	<div id="featureExtractionTime"></div>
+	<div id="classificationTime"></div>
+	<div id="myPlot" style="width:100%;max-width:700px"></div>
+    
+    <script>
+      if(self.crossOriginIsolated) { // needs to be cross-origin-isolated to use wasm threads. you need to serve this html file with these two headers: https://web.dev/coop-coep/
+        ort.env.wasm.numThreads = navigator.hardwareConcurrency
+      }
+    function filed() {
+      document.getElementById("files").click();
+    }
+	
+	function fileImport() {
+	  var tic = new Date().getTime();
+      var selectedFile = document.getElementById("files").files[0];
+	  //console.log(selectedFile);
+	  //document.getElementById('imgUrlInput').value = selectedFile.name;
+	  var reader = new FileReader();
+      reader.readAsDataURL(selectedFile);
+	  var pro = document.getElementById('progre');
+      pro.max = selectedFile.size;
+      pro.value = 0;
+      reader.onprogress = function (e) {
+        pro.value = e.loaded;
+      }
+      reader.onloadend = function() {
+        document.getElementById('imgUrlInput').value = reader.result;
+	    var toc = new Date().getTime();
+		var distance = toc - tic;
+		var seconds = distance % (1000 * 60) / 1000;
+		document.getElementById("imageLoadingTime").innerHTML = "Image loaded. Tooks " + seconds + " seconds.";
+      }
+	}
+      
+
+      async function main() {
+        //startBtn.disabled = true;
+        //startBtn.innerHTML = "see console";
+        
+        //console.log("Downloading model... (see network tab for progress)");
+        // let modelPath = backendSelectEl.value === "webgl" ? './clip-image-vit-32-int32-float32.onnx' : './clip-image-vit-32-float32.onnx';
+        //let modelPath = quantizedSelectEl.value === "no" ? 'https://huggingface.co/rocca/openai-clip-js/resolve/main/clip-image-vit-32-float32.onnx' : 'https://huggingface.co/rocca/openai-clip-js/resolve/main/clip-image-vit-32-uint8.onnx';
+        //const session = await ort.InferenceSession.create(modelPath, { executionProviders: [backendSelectEl.value] });
+        console.log("Loading models...");
+		var tic = new Date().getTime();
+		const session_feature = await ort.InferenceSession.create('wsi/onnx_swav_imagenet_layer2.onnx', {executionProviders: [backendSelectEl.value], graphOptimizationLevel: 'all'});
+		const session = await ort.InferenceSession.create('wsi/TransWSI-0.4Mb.onnx', {executionProviders: [backendSelectEl.value], graphOptimizationLevel: 'all'});
+		var toc = new Date().getTime();
+        var distance = toc - tic;
+        var seconds = distance % (1000 * 60) / 1000;
+        console.log("Model loaded. Took " + seconds + " secs.");
+		document.getElementById("modelLoadingTime").innerHTML = "Model loaded. Tooks " + seconds + " seconds.";
+
+		//console.log(imgUrlInput.value);
+        let rgbData = await getRgbData(imgUrlInput.value);
+		console.log(rgbData);
+		console.log(rgbData[0][0]);
+
+		const STEP = 224;
+		const WIDTH = rgbData[0][0].length;
+		const HEIGHT = rgbData[0].length;
+		console.log({'WIDTH':WIDTH, 'HEIGHT':HEIGHT});
+
+        if (WIDTH < STEP  ||  HEIGHT < STEP) {
+		  alert("Image is too small, width: " + WIDTH + ", height: " + HEIGHT);
+		  return 0;
+		}
+		
+		var xpos = Array();
+		var ypos = Array();
+		for (var y = 0; y < HEIGHT - STEP; y += STEP) {
+		  ypos.push(y);
+		}
+		for (var x = 0; x < WIDTH - STEP; x += STEP) {
+		  xpos.push(x);
+		}
+
+        const CHANNELS = 3;
+		let patch = new Float32Array(STEP*STEP*CHANNELS);
+		var patch_counter = 0;
+		var features = [];
+
+		tic = new Date().getTime();
+        console.log("Running feature extraction...");
+		for (var yi = 0; yi < ypos.length; yi++) {
+		  for (var xi = 0; xi < xpos.length; xi++) {
+		    var k = 0;
+		    for (var channel = 0; channel < CHANNELS; channel++) {
+			  for (var i = 0; i < STEP; i++) {
+			    for (var j = 0; j < STEP; j++) {
+		          patch[k] = rgbData[channel][ypos[yi]+i][xpos[xi]+j]
+				  k += 1;
+		        }
+		      }
+			  const feeds = {'x': new ort.Tensor('float32', patch, [1,CHANNELS,STEP,STEP])};
+              const result = await session_feature.run(feeds); // Time consuming.
+			  features = [...features, ...result.feature.data];
+			  patch_counter += 1;
+			  console.log("Processed " + patch_counter + " patches.");
+		    }
+		  }
+		}
+        toc = new Date().getTime();
+        distance = toc - tic;
+        seconds = distance % (1000 * 60) / 1000;
+        console.log("Finished feature extraction. Took " + seconds + " secs.");
+		document.getElementById("featureExtractionTime").innerHTML = "Finished feature extraction. Took " + seconds + " seconds.";
+
+		console.log("Inference on classification model.");
+        const feature_tensors = new ort.Tensor('float32', features, [1,patch_counter,1024])
+        const results = await session.run({inputs_embeds:feature_tensors});
+        console.log(results);
+		document.getElementById("classificationTime").innerHTML = "Finished classification.";
+
+		var data = [{
+          x: ['giraffes', 'orangutans', 'monkeys'],
+          y: [20, 14, 23],
+          type: 'bar'
+        }];
+		var layout = {
+					xaxis: {title:"Label"},
+					yaxis: {title:"Prob"},
+				};
+        Plotly.newPlot('myPlot', data, layout);
+
+      }
+      
+      async function getRgbData(imgUrl) {
+        let blob = await fetch(imgUrl, {referrer:""}).then(r => r.blob());
+        let img = await createImageBitmap(blob);
+		//console.log(img);
+
+        //let canvas = new OffscreenCanvas(224, 224);
+        let canvas = new OffscreenCanvas(img.width, img.height);
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+        let rgbData = [[], [], []]; // [r, g, b]
+        // remove alpha and put into correct shape:
+        let d = imageData.data;
+        for(let i = 0; i < d.length; i += 4) { 
+          let x = (i/4) % canvas.width;
+          let y = Math.floor((i/4) / canvas.width)
+          if(!rgbData[0][y]) rgbData[0][y] = [];
+          if(!rgbData[1][y]) rgbData[1][y] = [];
+          if(!rgbData[2][y]) rgbData[2][y] = [];
+          rgbData[0][y][x] = d[i+0]/255;
+          rgbData[1][y][x] = d[i+1]/255;
+          rgbData[2][y][x] = d[i+2]/255;
+          // From CLIP repo: Normalize(mean=(0.48145466, 0.4578275, 0.40821073), std=(0.26862954, 0.26130258, 0.27577711))
+          rgbData[0][y][x] = (rgbData[0][y][x] - 0.48145466) / 0.26862954;
+          rgbData[1][y][x] = (rgbData[1][y][x] - 0.4578275) / 0.26130258;
+          rgbData[2][y][x] = (rgbData[2][y][x] - 0.40821073) / 0.27577711;
+        }
+        //rgbData = Float32Array.from(rgbData.flat().flat());
+        return rgbData;
+      }
+    </script>
+  </body>
+</html>
