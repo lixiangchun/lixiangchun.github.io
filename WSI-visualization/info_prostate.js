@@ -15,7 +15,7 @@ const info_prostate = {
       "Head3": {
         "Url": "dzi/2823c18cde8d2c294a0f8d1cdc4c1a1e_0.8_roi_0_blur_1_rs_1_bc_0_a_0.4_l_1_bi_0_-1.0_bert_head_3.jpg/slide_files/"
       },
-      "TOAD": {
+      "AbMIL": {
         "Url": "dzi/2823c18cde8d2c294a0f8d1cdc4c1a1e_0.8_roi_0_blur_1_rs_1_bc_0_a_0.4_l_1_bi_0_-1.0_toad.jpg/slide_files/"
       },
       "width": 5760,
@@ -37,7 +37,7 @@ const info_prostate = {
       "Head3": {
         "Url": "dzi/504412fae0060c9e33565ee870c5f9b3_0.8_roi_0_blur_1_rs_1_bc_0_a_0.4_l_1_bi_0_-1.0_bert_head_3.jpg/slide_files/"
       },
-      "TOAD": {
+      "AbMIL": {
         "Url": "dzi/504412fae0060c9e33565ee870c5f9b3_0.8_roi_0_blur_1_rs_1_bc_0_a_0.4_l_1_bi_0_-1.0_toad.jpg/slide_files/"
       },
       "width": 6912,
@@ -59,7 +59,7 @@ const info_prostate = {
       "Head3": {
         "Url": "dzi/5203b6b2f6c3e46cdb2f09b9d99a5ecd_0.8_roi_0_blur_1_rs_1_bc_0_a_0.4_l_1_bi_0_-1.0_bert_head_3.jpg/slide_files/"
       },
-      "TOAD": {
+      "AbMIL": {
         "Url": "dzi/5203b6b2f6c3e46cdb2f09b9d99a5ecd_0.8_roi_0_blur_1_rs_1_bc_0_a_0.4_l_1_bi_0_-1.0_toad.jpg/slide_files/"
       },
       "width": 1792,
@@ -81,7 +81,7 @@ const info_prostate = {
       "Head3": {
         "Url": "dzi/67319450f16093d1be341212bc57c86f_0.8_roi_0_blur_1_rs_1_bc_0_a_0.4_l_1_bi_0_-1.0_bert_head_3.jpg/slide_files/"
       },
-      "TOAD": {
+      "AbMIL": {
         "Url": "dzi/67319450f16093d1be341212bc57c86f_0.8_roi_0_blur_1_rs_1_bc_0_a_0.4_l_1_bi_0_-1.0_toad.jpg/slide_files/"
       },
       "width": 2048,
