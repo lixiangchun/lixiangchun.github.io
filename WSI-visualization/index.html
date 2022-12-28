@@ -1,0 +1,188 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <nav>
+	    <!-- <div class="readme">Brief readme.</div> -->
+      <div>
+        <span>Menus</span>
+        <button id="showBtn">Show</button>
+        <button id="hideBtn">Hide</button>
+      </div>
+      <!-- Type controls -->
+      <div id="viewDiv">
+        <span>Views</span>
+        <button id="view.btn.HE" class="btn view-trigger active" data-type="original_image" title="origin">Original slide</button>
+        <button id="view.btn.H0" class="btn view-trigger active" data-type="head0_attention_map" title="head0">WIT-Head0</button>
+        <button id="view.btn.H1" class="btn view-trigger active" data-type="head1_attention_map" title="head1">WIT-Head1</button>
+        <button id="view.btn.H2" class="btn view-trigger active" data-type="head2_attention_map" title="head2">WIT-Head2</button>
+        <button id="view.btn.H3" class="btn view-trigger active" data-type="head3_attention_map" title="head3">WIT-Head3</button>
+        <button id="view.btn.TO" class="btn view-trigger active" data-type="AbMIL_attention_map" title="AbMIL">Attention-based MIL</button>
+      </div>
+
+      <!-- Zoom controls -->
+      <div id="zoomDiv">
+        <span>Zoom</span>
+        <button class="btn zoom-trigger" data-type="in" title="Zoom In">Zoom In</button>
+        <button class="btn zoom-trigger" data-type="out" title="Zoom Out">Zoom Out</button>
+      </div>
+
+      <!-- Mode toggles -->
+      <div id="modeDiv">
+        <span>Modes</span>
+        <button id="mode.btn.curtain" class="btn active mode-trigger mode-curtain" data-mode="curtain" title="Curtain Mode">Curtain</button>
+        <button id="mode.btn.sync" class="btn mode-trigger mode-syncs" data-mode="sync" title="Sync Mode">Sync</button>
+      </div>
+
+
+      <!-- TCGA Cancer Type -->
+      <div id="cancerTypeDiv">
+        <span>Cancer Type Detection</span>
+        <select id="SelectCancerType">
+          <!--Set in the JavaScript code-->
+        </select>
+      </div>
+
+
+      <!-- CPTAC Cancer Versus Normal -->
+      <div id="cancerVersusNormalDiv">
+        <span>Cancer Diagnosis </span>
+        <select id="SelectCancerVersusNormal">
+          <!--Set in the JavaScript code-->
+        </select>
+      </div>
+
+      <!-- Prostate Cancer Diagnosis (Biopsy)-->
+      <div id="prostateCancerVersusNormalDiv">
+        <span>Prostate Cancer Diagnosis</span>
+        <select id="SelectProstateCancerVersusNormal">
+          <!--Set in the JavaScript code-->
+        </select>
+      </div>
+
+
+    </nav>
+
+    <!-- Viewer Element -->
+    <div id="viewer"></div>
+    <div class="copyright">* For research purpose only</div>
+
+    <!-- OpenSeadragon from CDN and Plugin -->
+    <script src="./src/openseadragon.min.js"></script>
+    <script src="./src/openseadragon-curtain-sync.min.js"></script>
+
+    <!-- Demo Specific Scripts -->
+    <script src="./src/jquery.min.js"></script>
+    <script src="./scripts.js"></script>
+    <script src="./data.js"></script>
+    <script src="./reset.js"></script>
+    <script src="./info_TCGA.js"></script>
+    <script src="./info_CPTAC.js"></script>
+    <script src="./info_prostate.js"></script>
+
+    <!-- Initialize Viewer -->
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+      $("#hideBtn").prop("disabled", false);
+      $("#showBtn").prop("disabled", true);
+
+      $("#hideBtn").on("click", function() {
+        $("#viewDiv").hide();
+        $("#modeDiv").hide();
+        $("#zoomDiv").hide();
+        $("#cancerTypeDiv").hide();
+        $("#cancerVersusNormalDiv").hide();
+        $("#prostateCancerVersusNormalDiv").hide();
+        $("#hideBtn").prop("disabled", true);
+        $("#showBtn").prop("disabled", false);
+      });
+      $("#showBtn").on("click", function() {
+        $("#viewDiv").show();
+        $("#modeDiv").show();
+        $("#zoomDiv").show();
+        $("#cancerTypeDiv").show();
+        $("#cancerVersusNormalDiv").show();
+        $("#prostateCancerVersusNormalDiv").show();
+        $("#hideBtn").prop("disabled", false);
+        $("#showBtn").prop("disabled", true);
+      });
+    });
+
+    /** Set SelectCancerType Options**/
+    var cancerTypeOptions = document.getElementById('SelectCancerType');
+    let TCGA_barcodes = Object.keys(info_TCGA).sort();
+    for (var i = 0; i < TCGA_barcodes.length; i++) {
+      var el = document.createElement("option");
+      el.textContent = TCGA_barcodes[i];
+      el.value = TCGA_barcodes[i];
+      cancerTypeOptions.appendChild(el);
+    }
+
+    /** Set SelectCancerVersusNormal Options**/
+    var cancerVersusNormalOptions = document.getElementById('SelectCancerVersusNormal');
+    let CPTAC_barcodes = Object.keys(info_CPTAC).sort();
+    for (var i = 0; i < CPTAC_barcodes.length; i++) {
+      var el = document.createElement("option");
+      el.textContent = CPTAC_barcodes[i];
+      el.value = CPTAC_barcodes[i];
+      cancerVersusNormalOptions.appendChild(el);
+    }
+
+    /** Set SelectProstateCancerVersusNormal Options**/
+    var prostateCancerVersusNormalOptions = document.getElementById('SelectProstateCancerVersusNormal');
+    let prostate_barcodes = Object.keys(info_prostate).sort();
+    for (var i = 0; i < prostate_barcodes.length; i++) {
+      var el = document.createElement("option");
+      el.textContent = prostate_barcodes[i];
+      el.value = prostate_barcodes[i];
+      prostateCancerVersusNormalOptions.appendChild(el);
+    }
+
+
+    /** Default Slide **/
+    let attentionMaps = getDefaultSlide();
+    var viewer = new CurtainSyncViewer({
+      container: document.querySelector('#viewer'),
+      images: attentionMaps,
+    });
+
+    callViewer(info_CPTAC, "#SelectCancerVersusNormal");
+    callViewer(info_TCGA, "#SelectCancerType");
+    callViewer(info_prostate, "#SelectProstateCancerVersusNormal");
+
+    function callViewer(info, ID) {
+      var selector = document.querySelector(ID);
+      selector.addEventListener('change', function(event) {
+        if (selector.value in info) {
+          viewer.mode.destroy();
+        } else {
+          alert(selector.value + " NOT found.");
+          return false;
+        }
+        resetViewButtons();
+        resetModeButtons();
+
+        event.preventDefault();
+        console.log(selector.value);
+
+        let attentionMaps = getSelectedSlide(info, selector.value);
+        viewer = new CurtainSyncViewer({
+          container: document.querySelector('#viewer'), images: attentionMaps,
+        });
+      });
+    }
+
+
+    </script>
+  </body>
+</html>
+
+
